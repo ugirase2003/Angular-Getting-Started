@@ -1,1 +1,18 @@
-<p>Todo Works</p>
+<div class="container-fluid container">
+
+    <h4>Your Todos</h4>
+    
+    <!-- ngFor is like for loop  which will iterate for every todo element and render below html for very  single element -->
+    
+    <!-- <li>{{todo.sno}}-{{todo.title}}-{{todo.desc}}</li> -->
+    
+    <!-- below we are passing todo to app-todo-item (like props in react) -->
+    <div *ngIf="this.todos.length===0;else elseBlock ">There is no Todos in Your List</div>
+    <ng-template #elseBlock>
+        <ul *ngFor="let todo of todos;index as i" >
+        <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoDone)="toggleTodo($event)"></app-todo-item>
+        </ul>   
+    
+    </ng-template>
+    </div>
+    
