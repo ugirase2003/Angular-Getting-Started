@@ -11,7 +11,7 @@
     <ng-template #elseBlock>
         <ul *ngFor="let todo of todos;index as i" >
         <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoDone)="toggleTodo($event)"></app-todo-item>
-        </ul>   
+    </ul>   
     
     </ng-template>
     </div>
