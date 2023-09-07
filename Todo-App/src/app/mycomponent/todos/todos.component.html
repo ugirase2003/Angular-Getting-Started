@@ -1,5 +1,8 @@
 <div class="container-fluid container">
-
+    <!-- pass emmited event object to addTodo
+        <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+     -->
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
     <h4>Your Todos</h4>
     
     <!-- ngFor is like for loop  which will iterate for every todo element and render below html for very  single element -->
