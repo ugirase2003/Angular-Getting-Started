@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { Todo } from 'src/app/Todo';
+import { TodoDataServiceService } from 'src/app/services/todo-data-service.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { Todo } from 'src/app/Todo';
 export class TodosComponent {
 
   title="Ujjwal";
-  todos:Todo[]
+  todos:Todo[];
+  todosDataService:TodoDataServiceService=inject(TodoDataServiceService)
   constructor(){
     
     // demo data
@@ -21,10 +23,13 @@ export class TodosComponent {
 
     // }]
 
-    if(localStorage.getItem("todos") == null)
-    this.todos=[];
-    else
-    this.todos=JSON.parse(localStorage.getItem("todos"));
+    // if(localStorage.getItem("todos") == null)
+    // this.todos=[];
+    // else
+    // this.todos=JSON.parse(localStorage.getItem("todos"));
+
+    //now we are getting data with service
+    this.todos=this.todosDataService.getTodos();
    
   }
   ngOnInit():void{
