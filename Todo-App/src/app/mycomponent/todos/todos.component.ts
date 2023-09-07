@@ -1,6 +1,6 @@
 import { Component,inject } from '@angular/core';
 import { Todo } from 'src/app/Todo';
-import { TodoDataServiceService } from 'src/app/services/todo-data-service.service';
+import { TodoDataService } from 'src/app/services/todo-data-service.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class TodosComponent {
 
   title="Ujjwal";
   todos:Todo[];
-  todosDataService:TodoDataServiceService=inject(TodoDataServiceService)
+  todosDataService:TodoDataService=inject(TodoDataService)
   constructor(){
     
     // demo data
