@@ -12,7 +12,14 @@ export class TodosComponent {
   title="Ujjwal";
   todos:Todo[]
   constructor(){
-  
+    
+    // demo data
+    // this.todos=[{
+    //   title:"Task 1",
+    //   desc:"Task 1 Description",
+    //   active:true
+
+    // }]
 
     if(localStorage.getItem("todos") == null)
     this.todos=[];
