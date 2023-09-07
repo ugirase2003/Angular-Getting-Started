@@ -1,13 +1,13 @@
 <nav >
   <div class="container-fluid d-flex flex-row justify-content-between bg-info p-4 mb-4 text-white ">
-    <a class="navbar-brand  fs-4 ">Todos App</a>
+    <a class="navbar-brand  fs-4 " routerLink="/">Todos App</a>
     <div class="" id="navbarSupportedContent">
       <ul class="navbar-nav d-flex flex-row">
         <li class="nav-item active mx-3">
-          <a class="nav-link "  >Home</a>
+          <a class="nav-link " routerLink="/" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >About</a>
+          <a class="nav-link" routerLink="/about">About</a>
         </li>
 
        
@@ -15,4 +15,4 @@
       </div>
   </div>
 </nav>
-<app-todos></app-todos>
+<router-outlet></router-outlet>
