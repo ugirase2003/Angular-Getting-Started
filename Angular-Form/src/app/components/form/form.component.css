@@ -1,0 +1,7 @@
+::placeholder{
+    color: rgb(143, 143, 162);
+    font-weight: lighter;
+}
+input:disabled{
+    color: aqua;
+}
