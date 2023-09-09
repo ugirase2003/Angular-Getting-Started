@@ -1,1 +1,26 @@
-<p>employee-card works!</p>
+<!-- employee card template -->
+<!-- here we will get employee nd populate data in view -->
+<div class="card mb-3 mx-auto " style="max-width: 540px;">
+  <div class="row no-gutters align-items-center ">
+    <div class="col-md-4 d-flex justify-content-center">
+      <img src="https://robohash.org/hicveldicta.png?size=50x50&set=set1" class="card-img object-fit-contain" alt="...">
+    </div>
+    <div class="col-md-8  ">
+      <div class="card-body d-flex flex-column align-items-md-start">
+        <h5 class="card-title">{{emp.firstName+' '}}{{emp.maidenName+' '}}{{emp.lastName+' '}}</h5>
+        <div class="d-flex flex-column ">
+            <small class="card-text"><small class="fw-bold">Mobile :&nbsp; </small>{{emp.phone}}</small>
+            <small class="card-text"><small class="fw-bold">Email :&nbsp; </small>{{emp.email}}</small>
+
+            <div>
+                <small class="card-text"><small class="fw-bold">Age :&nbsp; </small>{{emp.age}}</small>
+                <small class="card-text text-uppercase"><small class="fw-bold mx-2 text-capitalize">Gender :&nbsp; </small>{{emp.gender}}</small>
+            </div>
+           
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <button class="btn btn-outline-info w-75 mx-auto">View</button>
+      </div>
+    </div>
+  </div>
+</div>

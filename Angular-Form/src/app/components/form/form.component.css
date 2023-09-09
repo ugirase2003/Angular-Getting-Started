@@ -8,3 +8,7 @@
 .error{
     border: 1px solid red;
 }
+label::after{
+    content: '*';
+    color: red;
+}

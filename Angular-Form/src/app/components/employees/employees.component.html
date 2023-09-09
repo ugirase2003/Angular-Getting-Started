@@ -1,3 +1,12 @@
-<div class="container">
-<app-employee-card></app-employee-card>
+<div class="container-fluid ">
+    <!-- when there is null in employees show loading -->
+ <div  *ngIf="this.employees==null;else elseBlock">
+  Loading...
+ </div>
+<ng-template #elseBlock>
+    <div *ngFor="let emp of employees;">
+    <app-employee-card [emp]="emp"></app-employee-card>
+</div>
+</ng-template>    
+
 </div>

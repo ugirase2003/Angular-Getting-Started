@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<div class="container-fluid  pb-4">
+    <nav class="sticky-top d-flex align-items-center" >
+        <div class="container-fluid d-flex flex-row justify-content-between bg-danger p-3 mb-4 text-white  ">
+          <a class="navbar-brand  fs-4 " routerLink="/">Demo Form</a>
+          <div class="" id="navbarSupportedContent">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">Register</a>
+                  </li>
+          
+              <li class="nav-item active mx-3">
+                <a class="nav-link " routerLink="/employeeData" >Employees</a>
+              </li>
+             
+            </ul>
+            </div>
+        </div>
+      </nav>
+<router-outlet ></router-outlet>
+</div>
