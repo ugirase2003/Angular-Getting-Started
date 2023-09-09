@@ -1,94 +1,218 @@
-<div class=" container p-4" [ngStyle]="{background: 'linear-gradient(-225deg, rgba(255,255,255,0.7) 50%, rgba(0,36,78,0.6) 80%), url(../assets/img/bg-log.jpg)'}">
- <div class="p-3 border-bottom">
-    <h4 class="text-center ">Company Registration Form</h4>
-    <p >Register your business by using this form. Required fields are marked with an asterisk(*)</p>
- </div>  
-  <!--form start -->
- <form class="mt-4 container">
-    <div class="row">
-        <div class="form-group col-sm ">
-            <label for="comp_name">Compnay Name</label>
-            <input type="text" class="form-control rounded-0" id="comp_name" >
-          </div>
-      
-          <div class="form-group col-sm">
-            <label for="owner">Owner</label>
-            <input type="text" class="form-control rounded-0" id="owner" >
-          </div>
+<div class="container p-4" [ngStyle]="{
+    background:
+      'linear-gradient(-225deg, rgba(255,255,255,0.7) 50%, rgba(0,36,78,0.6) 80%), url(../assets/img/bg-log.jpg)'
+  }">
+    <div class="p-3 border-bottom">
+        <h4 class="text-center">Company Registration Form</h4>
+        <p>
+            Register your business by using this form. Required fields are marked with
+            an asterisk(*)
+        </p>
     </div>
-<div class="mt-4">
+    <!--form start -->
+    <form class="mt-4 container" [formGroup]="registerForm" (ngSubmit)="registerFn()">
+        <div class="row">
 
-    <div class="form-group ">
-        <label for="street">Compnay Mailing Address</label>
-        <input type="text" class="form-control rounded-0" id="street"  placeholder="Street">
-      </div>
+            <div class="form-group col-sm">
+                <label for="comp_name">Compnay Name</label>
+                <input type="text" class="form-control rounded-0" id="comp_name" formControlName="comp_name" [ngClass]="{
+            error:
+              getControl('comp_name')?.errors &&
+              getControl('comp_name')?.touched 
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('comp_name')?.errors && getControl('comp_name')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('comp_name')?.errors?.['required']">Company Name is
+                        Required</small>
+                    <small class="text-danger" *ngIf="getControl('comp_name')?.errors?.['min']">Company Name is
+                        Required</small>
+                </div>
+            </div>
 
-    <div class="row mt-2">
-        <div class="form-group col-sm">
-          <input type="city" class="form-control rounded-0" id="city" placeholder="City">
+            <div class="form-group col-sm">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control rounded-0" id="owner" formControlName="owner" [ngClass]="{
+            error: getControl('owner')?.errors && getControl('owner')?.touched
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('owner')?.errors && getControl('owner')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('comp_name')?.errors?.['required']">Owner name Required</small>
+                    <small class="text-danger" *ngIf="getControl('comp_name')?.errors?.['min']">Must be of 30 characters</small>
+                </div>
+            </div>
         </div>
-      
-          <div class="form-group col-sm mt-2">
-            <input type="state" class="form-control rounded-0" id="state" placeholder="State">
-          </div>
-    </div>
 
-    <div class="row mt-2">
-        <div class="form-group col-sm">
-          <input type="zip" class="form-control rounded-0" id="zip" placeholder="Zip Code" >
+        <!-- address part -->
+        <div formGroupName="address" >
+        <div class="mt-4">
+            <div class="form-group">
+                <label for="street">Compnay Mailing Address</label>
+                <input type="text" class="form-control rounded-0" id="street" placeholder="Street"
+                    formControlName="street" [ngClass]="{
+            error: getControl('address.street')?.errors && getControl('address.street')?.touched
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('address.street')?.errors && getControl('address.street')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('address.street')?.errors?.['required']">Street Required</small>
+                    <small class="text-danger" *ngIf="getControl('address.street')?.errors?.['maxlength']">Must be of 30 characters</small>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-sm">
+                    <input type="city" class="form-control rounded-0" id="city" placeholder="City"
+                        formControlName="city" [ngClass]="{
+              error: getControl('address.city')?.errors && getControl('address.city')?.touched
+            }" />
+                    <!-- input error -->
+                    <div *ngIf="
+              getControl('address.city')?.errors &&
+              getControl('address.city')?.touched
+            ">
+                        <small class="text-danger" *ngIf="getControl('address.city')?.errors?.['required']">City is
+                            Required</small>
+                
+                    </div>
+                </div>
+
+                <div class="form-group col-sm ">
+                    <input type="state" class="form-control rounded-0" id="state" placeholder="State"
+                        formControlName="state" [ngClass]="{
+              error: getControl('address.state')?.errors && getControl('address.state')?.touched
+            }" />
+                    <!-- input error -->
+                    <div *ngIf="
+              getControl('address.state')?.errors &&
+              getControl('address.state')?.touched
+            ">
+                        <small class="text-danger" *ngIf="getControl('address.state')?.errors?.['required']">State Required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-sm">
+                    <input type="zip" class="form-control rounded-0" id="zip" placeholder="Zip Code"
+                        formControlName="zip" [ngClass]="{
+              error: getControl('address.zip')?.errors && getControl('address.zip')?.touched
+            }" />
+                    <!-- input error -->
+                    <div *ngIf="
+              getControl('address.zip')?.errors &&
+              getControl('address.zip')?.touched
+            ">
+                        <small class="text-danger" *ngIf="getControl('address.zip')?.errors?.['required']">Zipcode Required</small>
+                        <small class="text-danger" *ngIf="getControl('address.zip')?.errors?.['pattern'] || getControl('zip')?.errors?.['maxlength']">Enter Valid Zipcode</small>
+                    </div>
+                </div>
+
+                <div class="col-sm ">
+                    <select class="form-select rounded-0" name="country" id="country" required formControlName="country">
+                        <option disabled selected hidden value="">Country</option>
+                        <option *ngFor="let country of country_list" [ngValue]="country.name.common">
+                            {{ country.name.common }}
+                        </option>
+                    </select>
+
+                    <div *ngIf="
+                    getControl('address.country')?.errors && getControl('address.country')?.touched
+                  ">
+                            <small class="text-danger" *ngIf="getControl('address.country')?.errors?.['required']">Select Country</small>
+                        </div>
+                </div>
+                </div>
+            </div>
         </div>
-      
-        <div class="col-sm mt-2">
-            <select  class="form-select rounded-0" name="country" id="country" required>
-                <option disabled selected hidden>Country</option>
-                <option  *ngFor="let country of country_list" [value]="country.name.common">{{country.name.common}}</option>
+        <!-- address part end -->
 
-              </select>
-          </div>
-    </div>
+        <div class="row mt-4">
+            <div class="form-group col-sm">
+                <label for="email">Email</label>
+                <input type="email" class="form-control rounded-0" id="email" formControlName="email" [ngClass]="{
+            error: getControl('email')?.errors && getControl('email')?.touched
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('email')?.errors && getControl('email')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('email')?.errors?.['required']">Email Required</small>
+                    <small class="text-danger" *ngIf="getControl('email')?.errors?.['pattern']">Enter Valid Email</small>
+                </div>
+            </div>
+
+            <div class="form-group col-sm">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control rounded-0" id="phone" placeholder="### ##### ###"
+                    formControlName="phone" [ngClass]="{
+            error: getControl('phone')?.errors && getControl('phone')?.touched
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('phone')?.errors && getControl('phone')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('phone')?.errors?.['required']">Phone is Required</small>
+                    <small class="text-danger" *ngIf="getControl('phone')?.errors?.['maxlength'] || getControl('phone')?.errors?.['minlength']">Enter Valid Number</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-sm-4">
+            <div class="form-group col-sm">
+                <label for="nominal_cap">Nominal Capital</label>
+                <input type="text" class="form-control rounded-0" id="nominal_cap" required
+                    formControlName="nominal_cap" [ngClass]="{
+            error:
+              getControl('nominal_cap')?.errors &&
+              getControl('nominal_cap')?.touched
+          }" />
+                <!-- input error -->
+                <div *ngIf="
+            getControl('nominal_cap')?.errors && getControl('nominal_cap')?.touched
+          ">
+                    <small class="text-danger" *ngIf="getControl('nominal_cap')?.errors?.['required']">Company Name is
+                        Required</small>
+                    <small class="text-danger" *ngIf="getControl('nominal_cap')?.errors?.['pattern']">Enter Valid Capital</small>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label for="industry">Industry</label>
+                <select class="form-select rounded-0"formControlName="industry" name="industry" id="industry" required >
+                    <option disabled selected hidden value="">*Please Select*</option>
+                    <option *ngFor="let industry of industry_list" [ngValue]="industry">
+                        {{ industry }}
+                    </option>
+                </select>
+                
+                <div *ngIf="
+                getControl('industry')?.errors && getControl('industry')?.touched
+              ">
+                        <small class="text-danger" *ngIf="getControl('industry')?.errors?.['required']">Choose Industry type</small>
+                    </div>
+            </div>
+        </div>
+
+        <p *ngIf="!isFormValid"  class="text-danger" >*Fill required fields*</p>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-outline-info mx-2" type="reset">Reset</button>
+            <button class="btn btn-info text-white mx-2" type="submit">
+                Register
+            </button>
+        </div>
+    </form>
+    <!-- form end -->
+
 </div>
-    
 
+<!-- there are 2 types of form in react 
+1.template driven 
+2.reactive form 
 
-
-
-
-
-
-<div class="row mt-4">
-    <div class="form-group col-sm">
-        <label for="email">Email</label>
-        <input type="email" class="form-control rounded-0" id="email" >
-      </div>
-
-      <div class="form-group col-sm">
-        <label for="phone">Phone Number</label>
-        <input type="tel" class="form-control rounded-0" id="phone" placeholder="### ##### ###">
-      </div>
-</div>
-
-
-<div class="row mt-sm-4">
-    <div class="form-group col-sm">
-        <label for="nominal_cap">Nominal Capital</label>
-        <input type="text" class="form-control rounded-0" id="nominal_cap" required>
-      </div>
-      <div class="col-sm">
-        <label for="industry">Industry</label>
-        <select class="form-select rounded-0" name="industry" id="industry" required>
-            <option disabled selected hidden>*Please Select*</option>
-            <option *ngFor="let industry of industry_list" [value]="industry" >{{industry}}</option>
-      
-          </select>
-      </div>
-
-</div>
-
-<div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-outline-info mx-2" type="reset">Reset</button>
-    <button class="btn btn-info text-white mx-2" type="submit">Register</button>
-</div>
-
-  </form>
-  <!-- form end -->
-</div>
+we have implmented reactive form with some validation
+-->

@@ -2,6 +2,9 @@
     color: rgb(143, 143, 162);
     font-weight: lighter;
 }
-input:disabled{
+:disabled{
     color: aqua;
+}
+.error{
+    border: 1px solid red;
 }
