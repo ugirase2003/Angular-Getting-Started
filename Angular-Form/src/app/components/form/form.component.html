@@ -39,11 +39,10 @@
         </div>
       
         <div class="col-sm mt-2">
-            <select class="form-select rounded-0" name="country" id="country" required>
+            <select  class="form-select rounded-0" name="country" id="country" required>
                 <option disabled selected hidden>Country</option>
-                <option value="it">One</option>
-                <option value="mechanical">Two</option>
-                <option value="pharmaceutical">Three</option>
+                <option  *ngFor="let country of country_list" [value]="country.name.common">{{country.name.common}}</option>
+
               </select>
           </div>
     </div>
@@ -64,7 +63,7 @@
 
       <div class="form-group col-sm">
         <label for="phone">Phone Number</label>
-        <input type="tel" class="form-control rounded-0" id="phone">
+        <input type="tel" class="form-control rounded-0" id="phone" placeholder="### ##### ###">
       </div>
 </div>
 
@@ -72,23 +71,22 @@
 <div class="row mt-sm-4">
     <div class="form-group col-sm">
         <label for="nominal_cap">Nominal Capital</label>
-        <input type="text" class="form-control rounded-0" id="email" >
+        <input type="text" class="form-control rounded-0" id="nominal_cap" required>
       </div>
       <div class="col-sm">
         <label for="industry">Industry</label>
         <select class="form-select rounded-0" name="industry" id="industry" required>
             <option disabled selected hidden>*Please Select*</option>
-            <option value="it">One</option>
-            <option value="mechanical">Two</option>
-            <option value="pharmaceutical">Three</option>
+            <option *ngFor="let industry of industry_list" [value]="industry" >{{industry}}</option>
+      
           </select>
       </div>
 
 </div>
 
 <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-outline-info mx-2">Reset</button>
-    <button class="btn btn-info text-white mx-2">Register</button>
+    <button class="btn btn-outline-info mx-2" type="reset">Reset</button>
+    <button class="btn btn-info text-white mx-2" type="submit">Register</button>
 </div>
 
   </form>
